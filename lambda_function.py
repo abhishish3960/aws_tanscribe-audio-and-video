@@ -16,7 +16,7 @@ def lambda_handler(event, context):
     
     #  file upload sns
     sns_client.publish(
-            TopicArn='arn:aws:sns:ap-south-1:851725630658:audiofileuploaded',
+            TopicArn='your-topc-arn', // for sns notificcation
             Message=json.dumps({
             'bucket':source_bucket,
             'job_id': file_key,
@@ -121,7 +121,7 @@ def lambda_handler(event, context):
         
         # my sns notification
         sns_client.publish(
-            TopicArn='arn:aws:sns:ap-south-1:851725630658:AudioExtractionCompletion',
+            TopicArn='your-topic-arn',
             Message=json.dumps({
             'bucket':'extractedtextimage',
             'job_id': file_key,
@@ -137,7 +137,7 @@ def lambda_handler(event, context):
         }
     else:
         sns_client.publish(
-            TopicArn='arn:aws:sns:ap-south-1:851725630658:extraction_fails',
+            TopicArn='your-topic-arn',
             Message=json.dumps({
             'bucket':source_bucket,
             'job_id': file_key,
